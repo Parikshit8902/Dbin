@@ -86,11 +86,21 @@ Every directory is independent of the other. If you're running the Super_User pr
 
 2.  **Install Dependencies:** Ensure you have GCC, Make, and (for the CR machine) the SQLite3 development library installed using your distribution's package manager.
 
-3.  **Compile Programs:** Navigate into each directory and use `make`:
+3.  **Compile Programs:** For each designated system, navigate into the respective directory and use `make`. If any changes are made in any files, run `make clean` first and then run `make`:
+    For Central_Repository
     ```bash
-    cd Central_Repository && make && cd ..
-    cd Normal_User && make && cd ..
-    cd Super_User && make && cd ..
+    cd Central_Repository
+    make
+    ```
+    For Normal_User(s)
+    ```bash
+    cd Normal_User
+    make
+    ```
+    For Super_User
+    ```bash
+    cd Super_User
+    make
     ```
     This will create the executables: `cr` for Central_Repository, `nu` for Normal_User, and `su` for Super_User in their respective directories.
 
