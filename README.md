@@ -1,9 +1,10 @@
-# DBIN: Distributed File Sharing System for Linux
+# Dbin: A secure, distributed, file-sharing tool, made using C, for Linux.
+---
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/<your_username>/<your_repo>) <!-- Replace with your actual build badge if you set one up -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-DBIN provides a lightweight, secure, and efficient way for users on a local Linux network to share files directly or store them temporarily on a central server. Designed entirely in C, it features distinct user roles, secure IP-based access control, and robust file transfer capabilities using a hybrid UDP/TCP approach for optimal performance and large file support.
+Dbin provides a lightweight, secure, and efficient way for users on a local Linux network to share files directly or store them on a central server. Designed entirely in C, it features distinct user roles, secure IP-based access control, and robust file transfer capabilities using a hybrid UDP/TCP approach for optimal performance and large file support.
 
 ---
 
@@ -18,9 +19,7 @@ DBIN provides a lightweight, secure, and efficient way for users on a local Linu
 * **Database:** SQLite3 (on Central Repository)
 * **Build System:** Make
 * **Platform:** Linux
-
 ---
-
 ## Features & Usage Guide ✨⌨️
 
 ### Key Features
@@ -55,7 +54,14 @@ DBIN provides a lightweight, secure, and efficient way for users on a local Linu
 *(Note: Replace `<..._ip>` and `<filename/filepath>` with actual values.)*
 
 ---
+## File Structure 📂
+There are three directories - Super_User, Normal_User and Central_Repository. Each directory contains: 
+* **.c file: ** Main C program
+* **Makefile: ** For building the '.c' file
+* **set_firewall script file:** For configuring firewall settings to allow ports for communication.
 
+Every directory is independent of the other. If you're running the Super_User program on this machine, you need not download and run the other two programs, same for Normal_User and Central_Repository.
+---
 ## Dependencies 📦
 
 * **GCC Compiler & Build Tools:** (`build-essential` on Debian/Ubuntu)
@@ -66,11 +72,7 @@ DBIN provides a lightweight, secure, and efficient way for users on a local Linu
 
 ## Installation and Building ⚙️
 
-1.  **Clone the Repository:**
-    ```bash
-    git clone <your-repository-url>
-    cd <repository-directory>
-    ```
+1.  **Clone the Repository or Download the contents of the corresponding file.**
 
 2.  **Install Dependencies:** Ensure you have GCC, Make, and (for the CR machine) the SQLite3 development library installed using your distribution's package manager.
 
@@ -80,7 +82,7 @@ DBIN provides a lightweight, secure, and efficient way for users on a local Linu
     cd Normal_User && make && cd ..
     cd Super_User && make && cd ..
     ```
-    This will create the executables: `cr_server`, `nu_client`, and `su_controller` in their respective directories.
+    This will create the executables: `cr` for Central_Repository, `nu` for Normal_User, and `su` for Super_User in their respective directories.
 
 ---
 
@@ -96,20 +98,19 @@ DBIN provides a lightweight, secure, and efficient way for users on a local Linu
 2.  **Start Programs (Order Matters!):**
     * **First, start the Central Repository:**
         ```bash
-        ./Central_Repository/cr_server
+        ./cr
         ```
     * **Next, start all Normal User clients:**
         ```bash
-        ./Normal_User/nu_client
+        ./nu
         ```
-        *(They will wait for the IP table.)*
     * **Finally, start the Super User:**
         ```bash
-        ./Super_User/su_controller
+        ./su
         ```
-        * Follow the prompts to enter the number of Normal Users and the correct **network IP addresses** for all machines (NUs, CR, and the SU machine itself).
+        * Follow the prompts to enter the number of Normal Users (Max 10) and the correct **network IP addresses** for all machines (NUs, CR, and the SU machine itself).
 
-3.  **Use the System:** Once the Super User provides the IPs, the system is initialized, and you can use the commands listed in the "Features & Usage Guide" section.
+3.  **Use the System:** Once the Super User provides the IPs, the system is initialised, and you can use the commands listed in the "Features & Usage Guide" section.
 
 ---
 
@@ -117,5 +118,3 @@ DBIN provides a lightweight, secure, and efficient way for users on a local Linu
 
 This project is licensed under the **MIT License**. See the `LICENSE` file for details.
 ---
-
-## File Structure 📂
