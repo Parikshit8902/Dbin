@@ -10,6 +10,7 @@ Dbin provides a lightweight, secure, and efficient way for users on a local Linu
 * The Super User is the Admin. If a system is assigned as a Super User, it can control the sharing of files in the network. A Super User can send files to all other Normal Users as well as the Central Repository for storage. The Super User initialises the system as well as terminates it.
 * The Normal User(s) are systems without root priviledges. They can share files with other Normal Users, Super User as well as the Central Repository.
 * The Central Repository is the System which acts like a centralised storage unit. It utilises the capabilities of the SQLite Database for storing the file information. It can receive files from both the users (Normal and Super) as well as send files back to their respective owners. It allows the Super User to look at all the files which are currently stored in it. However, a Normal User can only see the files deleted by them. Also, the Super User can clear the contents of the Central Repository (files and metadata), but the Normal User can't. However, if any User (both Super and Normal) wants to retrieve their file from the Central Repository, then they can only get their files back and not others'. This feature ensures data integrity.  
+
 Abbreviations: 
 * **SU or su:** Refers to Super User
 * **NU or nu:** Refers to Normal User
