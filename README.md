@@ -1,10 +1,10 @@
-# Dbin: A secure, distributed, file-sharing tool, made using C, for Linux.
+# Dbin: A secure, distributed, command-line operable file-sharing tool, made using C, for Linux.
 ---
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/<your_username>/<your_repo>) <!-- Replace with your actual build badge if you set one up -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Dbin provides a lightweight, secure, and efficient way for users on a local Linux network to share files directly or store them on a central server. Designed entirely in C, it features distinct user roles, secure IP-based access control, and robust file transfer capabilities using a hybrid UDP/TCP approach for optimal performance and large file support.
+Dbin provides a lightweight, secure, and efficient way for users on a local Linux network to share files directly or store them on a central server. Designed entirely in C, it features distinct user roles, secure IP-based access control, and robust file transfer capabilities using a hybrid UDP/TCP approach for optimal performance and large file support. The entire tool is command-line operable.
 
 * The Dbin system has three actors: A Super User, up to 10 Normal Users and a Central Repository.
 * The Super User is the Admin. If a system is assigned as a Super User, it can control the sharing of files in the network. A Super User can send files to all other Normal Users as well as the Central Repository for storage. The Super User initialises the system as well as terminates it.
@@ -43,7 +43,7 @@ Abbreviations:
 
 ### Commands
 
-#### Super User (`./su`)
+#### On the Super User terminal (`./su`)
 
 * `fnu <nu_ip> <filepath>`: Send a file to a Normal User.
 * `fdel <cr_ip> <filepath>`: Send a file to the Central Repository for storage.
@@ -52,7 +52,7 @@ Abbreviations:
 * `cleardb <cr_ip>`: Clear all file records from the Central Repository database.
 * `kall`: Send a termination signal to all NU(s) and the CR, then exit.
 
-#### Normal User (`./nu`)
+#### On the Normal User terminal (`./nu`)
 
 * `fsu <su_ipaddress> <filepath>`: Send a file to the Super User.
 * `fnu <nu_ipaddress> <filepath>`: Send a file to another Normal User.
@@ -106,15 +106,15 @@ Every directory is independent of the other. If you're running the Super_User pr
     * On the **Super User** machine: `sudo bash Super_User/setup_firewall_su.sh`
 
 2.  **Start Programs (Order Matters!):**
-    * **First, start the Central Repository:**
+    * **First, on the system designated as Central Repository, start the Central Repository:**
         ```bash
         ./cr
         ```
-    * **Next, start all Normal User clients:**
+    * **Next, on the system(s) designated as Normal User(s), start all Normal User clients:**
         ```bash
         ./nu
         ```
-    * **Finally, start the Super User:**
+    * **Finally, on the system designated as Super User, start the Super User:**
         ```bash
         ./su
         ```
