@@ -1,4 +1,4 @@
-# Dbin: A secure, distributed, command-line operable file-sharing tool, made using C, for Linux.
+# Dbin: A secure, distributed, command-line-based file-sharing tool, made using C, for Linux.
 ---
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/<your_username>/<your_repo>) <!-- Replace with your actual build badge if you set one up -->
