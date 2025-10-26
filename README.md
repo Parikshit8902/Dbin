@@ -6,6 +6,15 @@
 
 Dbin provides a lightweight, secure, and efficient way for users on a local Linux network to share files directly or store them on a central server. Designed entirely in C, it features distinct user roles, secure IP-based access control, and robust file transfer capabilities using a hybrid UDP/TCP approach for optimal performance and large file support.
 
+* The Dbin system has three actors: A Super User, up to 10 Normal Users and a Central Repository.
+* The Super User is the Admin. If a system is assigned as a Super User, it can control the sharing of files in the network. A Super User can send files to all other Normal Users as well as the Central Repository for storage. The Super User initialises the system as well as terminates it.
+* The Normal User(s) are systems without root priviledges. They can share files with other Normal Users, Super User as well as the Central Repository.
+* The Central Repository is the System which acts like a centralised storage unit. It utilises the capabilities of the SQLite Database for storing the file information. It can receive files from both the users (Normal and Super) as well as send files back to their respective owners. It allows the Super User to look at all the files which are currently stored in it. However, a Normal User can only see the files deleted by them. Also, the Super User can clear the contents of the Central Repository (files and metadata), but the Normal User can't. However, if any User (both Super and Normal) wants to retrieve their file from the Central Repository, then they can only get their files back and not others'. This feature ensures data integrity.  
+Abbreviations: 
+* **SU or su:** Refers to Super User
+* **NU or nu:** Refers to Normal User
+* **CR or cr:** Refers to Central Repository
+
 ---
 
 ## Tools & Technology Used 🛠️
@@ -25,33 +34,33 @@ Dbin provides a lightweight, secure, and efficient way for users on a local Linu
 ### Key Features
 
 * **Distinct User Roles:** Super User (admin), Normal User (client), Central Repository (server).
-* **Secure within LAN:** Communication restricted to authorized IPs defined by the Super User.
-* **Flexible File Sharing:** SU -> NU, NU -> SU, NU -> NU, Any -> CR.
-* **Centralized Storage:** Temporary storage on CR with user-specific retrieval.
+* **Secure within LAN:** Communication restricted to authorised IPs defined by the Super User.
+* **Flexible File Sharing:** SU -> NU, NU -> SU, NU -> NU, Any -> CR, CR -> Any (The User which raised the query).
+* **Centralised Storage:** Temporary storage on CR with user-specific retrieval.
 * **Administrative Controls:** SU can view all CR files (`fsee`), clear the CR database (`cleardb`), and shut down the system (`kall`).
 * **Large File Support:** Reliable TCP streaming for files exceeding UDP limits.
 
 ### Commands
 
-#### Super User (`su_controller`)
+#### Super User (`./su`)
 
 * `fnu <nu_ip> <filepath>`: Send a file to a Normal User.
 * `fdel <cr_ip> <filepath>`: Send a file to the Central Repository for storage.
 * `fsee <cr_ip>`: View all files currently stored in the Central Repository.
 * `fback <cr_ip> <filename>`: Retrieve your own previously stored file from the CR.
 * `cleardb <cr_ip>`: Clear all file records from the Central Repository database.
-* `kall`: Send a termination signal to all NUs and the CR, then exit.
+* `kall`: Send a termination signal to all NU(s) and the CR, then exit.
 
-#### Normal User (`nu_client`)
+#### Normal User (`./nu`)
 
-* `fsu <su_ip> <filepath>`: Send a file to the Super User.
-* `fnu <nu_ip> <filepath>`: Send a file to another Normal User.
-* `fdel <cr_ip> <filepath>`: Send a file to the Central Repository for storage.
-* `seemyfiles <cr_ip>`: View only your files currently stored in the Central Repository.
-* `fback <cr_ip> <filename>`: Retrieve your own previously stored file from the CR.
+* `fsu <su_ipaddress> <filepath>`: Send a file to the Super User.
+* `fnu <nu_ipaddress> <filepath>`: Send a file to another Normal User.
+* `fdel <cr_ipaddress> <filepath>`: Send a file to the Central Repository for storage.
+* `seemyfiles <cr_ipaddress>`: View only your files currently stored in the Central Repository.
+* `fback <cr_ipaddress> <filename>`: Retrieve your own previously stored file from the CR.
 * `exit`: Exit the Normal User client program.
 
-*(Note: Replace `<..._ip>` and `<filename/filepath>` with actual values.)*
+*(Note: Replace `<..._ipaddress>` and `<filename/filepath>` with actual values.)*
 
 ---
 ## File Structure 📂
