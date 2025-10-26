@@ -129,7 +129,7 @@ Every directory is independent of the other. If you're running the Super_User pr
         ```bash
         ./su
         ```
-        * Follow the prompts to enter the number of Normal Users (Max 10) and the correct **network IP addresses** for all machines (NUs, CR, and the SU machine itself).
+    * Follow the prompts to enter the number of Normal Users (Max 10) and the correct **network IP addresses** for all machines (NUs, CR, and the SU machine itself).
 
 3.  **Use the System:** Once the Super User provides the IPs, the system is initialised, and you can use the commands listed in the "Features & Usage Guide" section.
 
