@@ -1,0 +1,25 @@
+Note: The numberings given to the commands are not a part of the command. Depending on the type of command, the structure is as follows:
+  
+command<space><ip><space><filepath> 
+or 
+command<space><ip>
+or
+command
+
+On the Super User terminal (./su)
+
+1) fnu <nu_ip> <filepath>: Send a file to a Normal User.
+2) fdel <cr_ip> <filepath>: Send a file to the Central Repository for storage.
+3) fsee <cr_ip>: View all files currently stored in the Central Repository.
+4) fback <cr_ip> <filename>: Retrieve your own previously stored file from the CR.
+5) cleardb <cr_ip>: Clear all file records from the Central Repository database.
+6) kall: Send a termination signal to all NU(s) and the CR, then exit.
+
+On the Normal User terminal (./nu)
+
+1) fsu <su_ipaddress> <filepath>: Send a file to the Super User.
+2) fnu <nu_ipaddress> <filepath>: Send a file to another Normal User.
+3) fdel <cr_ipaddress> <filepath>: Send a file to the Central Repository for storage.
+4) seemyfiles <cr_ipaddress>: View only your files currently stored in the Central Repository.
+5) fback <cr_ipaddress> <filename>: Retrieve your own previously stored file from the CR.
+6) exit: Exit the Normal User client program.
