@@ -4,7 +4,7 @@
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/<your_username>/<your_repo>) <!-- Replace with your actual build badge if you set one up -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Dbin provides a lightweight, secure, and efficient way for users on a local Linux network to share files directly or store them on a central server. Designed entirely in C, it features distinct user roles, secure IP-based access control, and robust file transfer capabilities using a hybrid UDP/TCP approach for optimal performance and large file support. The entire tool is command-line operable.
+Dbin provides a lightweight, secure, and efficient way for users on a local Linux network to share files directly or store them on a central server. Designed entirely in C, it features distinct user roles, secure IP-based access control, and robust file transfer capabilities using a hybrid UDP/TCP approach for optimal performance and large file support. The entire tool is command-line driven.
 
 * The Dbin system has three actors: A Super User, up to 10 Normal Users and a Central Repository.
 * The Super User is the Admin. If a system is assigned as a Super User, it can control the sharing of files in the network. A Super User can send files to all other Normal Users as well as the Central Repository for storage. The Super User initialises the system as well as terminates it.
@@ -88,17 +88,17 @@ Every directory is independent of the other. If you're running the Super_User pr
 
 3.  **Compile Programs:** For each designated system, navigate into the respective directory and use `make`. If any changes are made in any files, run `make clean` first and then run `make`:
    
-    For Central_Repository
+    For Central_Repository CLI (Command-Line Interface)
     ```bash
     cd Central_Repository
     make
     ```
-    For Normal_User(s)
+    For Normal_User(s) CLI
     ```bash
     cd Normal_User
     make
     ```
-    For Super_User
+    For Super_User CLI
     ```bash
     cd Super_User
     make
